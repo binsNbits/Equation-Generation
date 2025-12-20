@@ -1,0 +1,196 @@
+<h1 id="equation-generator---pre-algebra-practice">Equation Generator -
+Pre-Algebra Practice</h1>
+<p>A Python program that generates 10,000 progressively challenging
+pre-algebra math equations and creates two beautifully formatted PDF
+files: one with equations for practice and one with complete
+answers.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li><strong>10,000 Unique Equations</strong>: Generates a comprehensive
+set of math problems covering the entire pre-algebra syllabus</li>
+<li><strong>Progressive Difficulty</strong>: Questions are organized in
+15 stages, starting from basic arithmetic and progressing to complex
+geometry and probability</li>
+<li><strong>Two Styled PDFs</strong>: Creates separate, professionally
+formatted PDFs for equations and answers</li>
+<li><strong>Reproducible Results</strong>: Uses random seed generation
+for reproducibility</li>
+<li><strong>Comprehensive Coverage</strong>: Covers 9 major mathematical
+units</li>
+</ul>
+<h2 id="topics-covered">Topics Covered</h2>
+<h3 id="unit-1-fundamentals-of-real-numbers">Unit 1: Fundamentals of
+Real Numbers</h3>
+<ul>
+<li>Addition and subtraction of integers</li>
+<li>Multiplication and division</li>
+<li>Order of operations (PEMDAS)</li>
+<li>Absolute value</li>
+<li>Square roots</li>
+</ul>
+<h3 id="unit-2-fractions-and-decimals">Unit 2: Fractions and
+Decimals</h3>
+<ul>
+<li>Adding and multiplying fractions</li>
+<li>Decimal operations</li>
+<li>Simplifying fractions</li>
+</ul>
+<h3 id="unit-3-expressions-and-properties">Unit 3: Expressions and
+Properties</h3>
+<ul>
+<li>Evaluating algebraic expressions</li>
+<li>Distributive property</li>
+<li>Combining like terms</li>
+</ul>
+<h3 id="unit-4-solving-equations">Unit 4: Solving Equations</h3>
+<ul>
+<li>One-step equations (addition/subtraction and
+multiplication/division)</li>
+<li>Two-step equations</li>
+<li>Variables on both sides</li>
+<li>Equations with distribution</li>
+<li>Equations with fractions</li>
+</ul>
+<h3 id="unit-5-ratios-proportions-and-percentages">Unit 5: Ratios,
+Proportions, and Percentages</h3>
+<ul>
+<li>Simplifying ratios</li>
+<li>Solving proportions</li>
+<li>Percentage calculations</li>
+<li>Simple interest problems</li>
+</ul>
+<h3 id="unit-6-exponents">Unit 6: Exponents</h3>
+<ul>
+<li>Basic exponent evaluation</li>
+<li>Exponent properties</li>
+<li>Negative and zero exponents</li>
+<li>Scientific notation</li>
+</ul>
+<h3 id="unit-7-linear-functions">Unit 7: Linear Functions</h3>
+<ul>
+<li>Coordinate plane</li>
+<li>Slope calculations</li>
+<li>Linear equations in slope-intercept form</li>
+</ul>
+<h3 id="unit-8-geometry">Unit 8: Geometry</h3>
+<ul>
+<li>Angle relationships (complementary, supplementary, vertical
+angles)</li>
+<li>Perimeter and area (rectangles, squares, triangles)</li>
+<li>Circle circumference and area</li>
+<li>Pythagorean theorem</li>
+<li>Volume (rectangular prisms, cylinders, cubes)</li>
+</ul>
+<h3 id="unit-9-data-and-probability">Unit 9: Data and Probability</h3>
+<ul>
+<li>Mean, median, mode, and range</li>
+<li>Basic probability</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Python 3.x</li>
+<li>ReportLab library</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<ol type="1">
+<li><p>Clone or download this repository</p></li>
+<li><p>Create a virtual environment (optional but recommended):</p></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv venv</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> venv/bin/activate  <span class="co"># On Windows: venv\Scripts\activate</span></span></code></pre></div>
+<ol start="3" type="1">
+<li>Install required dependencies:</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install reportlab</span></code></pre></div>
+<h2 id="usage">Usage</h2>
+<p>Run the program from the command line:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> generate_equations.py</span></code></pre></div>
+<p>The program will: 1. Generate 10,000 progressively challenging
+equations 2. Display progress in the terminal 3. Create two timestamped
+PDF files: - <code>equations_YYYYMMDD_HHMMSS.pdf</code> - Practice
+equations - <code>answers_YYYYMMDD_HHMMSS.pdf</code> - Complete answer
+key</p>
+<h2 id="example-output">Example Output</h2>
+<pre><code>======================================================================
+EQUATION GENERATOR - Pre-Algebra Practice
+======================================================================
+
+Generating 10,000 progressively challenging equations...
+✓ Generated 10000 equations
+  Seed used: 427851
+
+Creating stylish PDF files...
+✓ Created: equations_20231220_143052.pdf
+✓ Created: answers_20231220_143052.pdf
+
+======================================================================
+COMPLETE!
+======================================================================
+
+Equations PDF: equations_20231220_143052.pdf
+Answers PDF:   answers_20231220_143052.pdf
+
+Each time you run this script, new random equations will be generated
+following the same progressive difficulty curve based on the syllabus.</code></pre>
+<h2 id="how-it-works">How It Works</h2>
+<h3 id="progression-system">Progression System</h3>
+<p>The program divides the 10,000 equations into 15 stages, with
+difficulty increasing gradually:</p>
+<ul>
+<li><strong>Stage 1 (Equations 1-500)</strong>: Basic arithmetic</li>
+<li><strong>Stage 2 (501-1200)</strong>: Advanced arithmetic and square
+roots</li>
+<li><strong>Stage 3 (1201-2000)</strong>: Introduction to fractions</li>
+<li><strong>Stage 4 (2001-3000)</strong>: Advanced fractions and
+decimals</li>
+<li><strong>Stage 5 (3001-4000)</strong>: Basic algebraic
+expressions</li>
+<li><strong>Stage 6 (4001-4800)</strong>: Advanced expressions</li>
+<li><strong>Stage 7 (4801-5600)</strong>: One-step equations</li>
+<li><strong>Stage 8 (5601-6500)</strong>: Two-step equations</li>
+<li><strong>Stage 9 (6501-7200)</strong>: Variables on both sides</li>
+<li><strong>Stage 10 (7201-7800)</strong>: Distribution in
+equations</li>
+<li><strong>Stage 11 (7801-8400)</strong>: Ratios and proportions</li>
+<li><strong>Stage 12 (8401-9000)</strong>: Exponents</li>
+<li><strong>Stage 13 (9001-9500)</strong>: Linear functions</li>
+<li><strong>Stage 14 (9501-9800)</strong>: Geometry</li>
+<li><strong>Stage 15 (9801-10000)</strong>: Mixed final review</li>
+</ul>
+<h3 id="pdf-formatting">PDF Formatting</h3>
+<ul>
+<li>Professional layout with color-coded headers</li>
+<li>50 equations per page in organized tables</li>
+<li>Alternating row colors for easy reading</li>
+<li>Timestamp on each document</li>
+<li>Different styling for equations vs. answers</li>
+</ul>
+<h3 id="randomization">Randomization</h3>
+<p>Each run generates new random equations while maintaining the same
+difficulty progression. The seed value is displayed so you can
+regenerate the same set if needed.</p>
+<h2 id="customization">Customization</h2>
+<p>You can modify the program to: - Change the total number of equations
+(modify the <code>count</code> parameter in
+<code>generate_equation_set()</code>) - Adjust difficulty ranges for
+specific topics - Modify the progression stages - Customize PDF styling
+(colors, fonts, layout)</p>
+<h2 id="use-cases">Use Cases</h2>
+<ul>
+<li><strong>Teachers</strong>: Generate unique practice worksheets for
+students</li>
+<li><strong>Students</strong>: Create custom practice sets for exam
+preparation</li>
+<li><strong>Tutors</strong>: Provide varied homework assignments</li>
+<li><strong>Homeschooling</strong>: Generate comprehensive math practice
+materials</li>
+</ul>
+<h2 id="license">License</h2>
+<p>This project is open source and available for educational
+purposes.</p>
+<h2 id="contributing">Contributing</h2>
+<p>Feel free to submit issues or pull requests to improve the equation
+generator or add new problem types.</p>
