@@ -1097,7 +1097,7 @@ def create_pdf(filename, title, content_list, is_answers=False):
     title_style = ParagraphStyle(
         'CustomTitle',
         parent=styles['Heading1'],
-        fontSize=24,
+        fontSize=48,
         textColor=colors.HexColor('#1a5490'),
         spaceAfter=30,
         alignment=TA_CENTER,
@@ -1108,7 +1108,7 @@ def create_pdf(filename, title, content_list, is_answers=False):
     subtitle_style = ParagraphStyle(
         'CustomSubtitle',
         parent=styles['Normal'],
-        fontSize=12,
+        fontSize=32,
         textColor=colors.HexColor('#666666'),
         spaceAfter=20,
         alignment=TA_CENTER,
@@ -1119,7 +1119,7 @@ def create_pdf(filename, title, content_list, is_answers=False):
     equation_style = ParagraphStyle(
         'EquationStyle',
         parent=styles['Normal'],
-        fontSize=11,
+        fontSize=24,
         textColor=colors.black,
         leftIndent=0,
         fontName='Helvetica',
@@ -1130,7 +1130,7 @@ def create_pdf(filename, title, content_list, is_answers=False):
     answer_style = ParagraphStyle(
         'AnswerStyle',
         parent=styles['Normal'],
-        fontSize=11,
+        fontSize=24,
         textColor=colors.HexColor('#2c5282') if is_answers else colors.black,
         leftIndent=0,
         fontName='Helvetica-Bold' if is_answers else 'Helvetica',
@@ -1185,6 +1185,31 @@ def create_pdf(filename, title, content_list, is_answers=False):
     doc.build(elements)
 
 
+def convert_to_programming_friendly(text):
+    """Convert mathematical notation to programming-friendly operators"""
+    # Replace multiplication symbol
+    text = text.replace('×', '*')
+
+    # Replace division symbol
+    text = text.replace('÷', '/')
+
+    # Handle square roots - convert √n to sqrt(n)
+    import re
+    # Match √ followed by digits
+    text = re.sub(r'√(\d+)', r'sqrt(\1)', text)
+
+    # Handle exponents
+    # Replace ² with **2
+    text = text.replace('²', '**2')
+    # Replace ³ with **3
+    text = text.replace('³', '**3')
+
+    # Handle generic exponents like 2^3 -> 2**3
+    text = text.replace('^', '**')
+
+    return text
+
+
 def main():
     """Main function to generate equations and create PDFs"""
     print("=" * 70)
@@ -1226,6 +1251,46 @@ def main():
     )
     print(f"✓ Created: {answers_filename}")
 
+    # Create TXT files with programming-friendly operators
+    equations_txt_filename = f"equations_{timestamp}.txt"
+    answers_txt_filename = f"answers_{timestamp}.txt"
+
+    print("\nCreating TXT files with programming-friendly operators...")
+
+    # Create equations TXT file
+    with open(equations_txt_filename, 'w', encoding='utf-8') as f:
+        for eq in equations:
+            # Replace line number with '#'
+            # Extract the equation part after the number
+            parts = eq.split('. ', 1)
+            if len(parts) == 2:
+                eq_text = parts[1]
+                # Convert to programming-friendly format
+                eq_friendly = convert_to_programming_friendly(eq_text)
+                f.write(f"# {eq_friendly}\n")
+            else:
+                # Fallback if format is different
+                eq_friendly = convert_to_programming_friendly(eq)
+                f.write(f"# {eq_friendly}\n")
+    print(f"✓ Created: {equations_txt_filename}")
+
+    # Create answers TXT file
+    with open(answers_txt_filename, 'w', encoding='utf-8') as f:
+        for ans in answers:
+            # Replace line number with '#'
+            # Extract the answer part after the number
+            parts = ans.split('. ', 1)
+            if len(parts) == 2:
+                ans_text = parts[1]
+                # Convert to programming-friendly format
+                ans_friendly = convert_to_programming_friendly(ans_text)
+                f.write(f"# {ans_friendly}\n")
+            else:
+                # Fallback if format is different
+                ans_friendly = convert_to_programming_friendly(ans)
+                f.write(f"# {ans_friendly}\n")
+    print(f"✓ Created: {answers_txt_filename}")
+
     print()
     print("=" * 70)
     print("COMPLETE!")
@@ -1233,9 +1298,12 @@ def main():
     print()
     print(f"Equations PDF: {equations_filename}")
     print(f"Answers PDF:   {answers_filename}")
+    print(f"Equations TXT: {equations_txt_filename}")
+    print(f"Answers TXT:   {answers_txt_filename}")
     print()
     print("Each time you run this script, new random equations will be generated")
     print("following the same progressive difficulty curve based on the syllabus.")
+    print("TXT files use programming-friendly operators (*, /, **, sqrt(), etc.)")
     print()
 
 
